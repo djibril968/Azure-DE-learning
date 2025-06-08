@@ -1,0 +1,112 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "AFT-DF"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage2Linkedservice_02_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2Linkedservice_02'"
+		},
+		"AzureDataLakeStorageLinkedService_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorageLinkedService'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://aftsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2Linkedservice_02_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://aftsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://aftsa.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://afritechkv.vault.azure.net/"
+		},
+		"SQLserveronpremlinkedserv_01_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "Djibril_PC"
+		},
+		"SQLserveronpremlinkedserv_01_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorksLT2022"
+		},
+		"SQLserveronpremlinkedserv_01_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "djibril"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "AFT-DF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDataLakeStorage2Linkedservice_02_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2Linkedservice_02_accountKey')]"
+					},
+					"AzureDataLakeStorageLinkedService_accountKey": {
+						"value": "[parameters('AzureDataLakeStorageLinkedService_accountKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage2Linkedservice_02_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2Linkedservice_02_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorageLinkedService_properties_typeProperties_url')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"SQLserveronpremlinkedserv_01_properties_typeProperties_server": {
+						"value": "[parameters('SQLserveronpremlinkedserv_01_properties_typeProperties_server')]"
+					},
+					"SQLserveronpremlinkedserv_01_properties_typeProperties_database": {
+						"value": "[parameters('SQLserveronpremlinkedserv_01_properties_typeProperties_database')]"
+					},
+					"SQLserveronpremlinkedserv_01_properties_typeProperties_userName": {
+						"value": "[parameters('SQLserveronpremlinkedserv_01_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

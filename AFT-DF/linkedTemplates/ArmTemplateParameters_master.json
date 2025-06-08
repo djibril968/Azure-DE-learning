@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "AFT-DF"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2Linkedservice_02_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorageLinkedService_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://aftsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2Linkedservice_02_properties_typeProperties_url": {
+			"value": "https://aftsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
+			"value": "https://aftsa.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://afritechkv.vault.azure.net/"
+		},
+		"SQLserveronpremlinkedserv_01_properties_typeProperties_server": {
+			"value": "Djibril_PC"
+		},
+		"SQLserveronpremlinkedserv_01_properties_typeProperties_database": {
+			"value": "AdventureWorksLT2022"
+		},
+		"SQLserveronpremlinkedserv_01_properties_typeProperties_userName": {
+			"value": "djibril"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
